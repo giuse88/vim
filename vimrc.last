@@ -1,0 +1,92 @@
+"This awesome color scheme
+colorscheme gruvbox
+
+" Mappings 
+imap jj <Esc>   " Press i to enter insert mode, and jj to exit.
+map tt :tabnew <Enter>  "Open new tab
+
+" Syntatic 
+let g:syntastic_check_on_open=1
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_enable_highlighting=0
+let g:syntastic_auto_loc_list=0
+
+"save the current buffer
+imap <c-s> :w<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <Esc><c-s>
+
+nmap <F2> :update<CR>
+vmap <F2> <Esc><F2>gv
+imap <F2> <c-o><F2>
+
+"""""""""""""""""""""""""""""""""""""""""
+" use :w!! to write to a file using     "
+" sudo if you forgot to 'sudo vim file' "
+" (it will prompt for sudo password     "
+" when writing)                         "
+"""""""""""""""""""""""""""""""""""""""""
+cmap w!! w !sudo tee > /dev/null %
+
+"""""""""""""""""""""""""""""""""""""""""
+"NERDTree configuration"
+"""""""""""""""""""""""""""""""""""""""""
+let NERDTreeChDirMode=2
+map <leader>n :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" COPY and Paste from the clipboard register " 
+""""""""""""""""""""""""""""""""""""""""""""""
+
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
+
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+
+" CTRL-V and SHIFT-Insert are Paste
+map <C-V> "+gP
+map <S-Insert> "+gP
+
+cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
+
+" Pasting blockwise and linewise selections is not possible in Insert and
+" Visual mode without the +virtualedit feature.  They are pasted as if they
+" were characterwise instead.
+" Uses the paste.vim autoload script.
+
+exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
+exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
+
+imap <S-Insert> <C-V>
+vmap <S-Insert> <C-V>
+
+" Use CTRL-Q to do what CTRL-V used to do
+noremap <C-Q> <C-V>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+" Go to the next error 
+map <leader>sn ]s 
+" Go to the previous error 
+map <leader>sp [s
+" Add the word to the dictionary
+map <leader>sa zg
+" Get list of suggestions 
+map <leader>sd z=
+
+" Map ctrl-movement keys to window switching
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>

@@ -270,7 +270,7 @@ set nocompatible
 """ Keybindings {{{
     """ General {{{
         " Remap <leader>
-        let mapleader=","
+        "let mapleader=","
 
         " Quickly edit/source .vimrc
         noremap <leader>ve :edit $HOME/.vimrc<CR>
@@ -419,7 +419,7 @@ set nocompatible
 
             augroup StripTrailingWhitespace
                 autocmd!
-                autocmd FileType c,cpp,cfg,conf,css,html,perl,python,sh,tex
+                autocmd FileType c,cpp,cfg,conf,css,html,perl,python,sh,tex,javascript
                             \ autocmd BufWritePre <buffer> :call
                             \ <SID>StripTrailingWhitespace()
             augroup END
@@ -467,7 +467,7 @@ set nocompatible
     let g:syntastic_mode_map = {
         \ 'mode': 'passive',
         \ 'active_filetypes':
-            \ ['c', 'cpp', 'perl', 'python', 'sh'] }
+            \ ['c', 'cpp', 'perl', 'python', 'sh', 'javascript'] }
 
     " Netrw - the bundled (network) file and directory browser
     let g:netrw_banner = 0

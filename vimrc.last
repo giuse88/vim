@@ -36,9 +36,9 @@ cmap w!! w !sudo tee > /dev/null %
 """""""""""""""""""""""""""""""""""""""""
 "NERDTree configuration"
 """""""""""""""""""""""""""""""""""""""""
-let NERDTreeChDirMode=2
 map <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " COPY and Paste from the clipboard register " 
@@ -99,3 +99,8 @@ set tabstop=2       " The width of a TAB is set to 2g.
 set shiftwidth=2    " Indents will have a width of 2g
 set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
+
+" Startify 
+autocmd User Startified setlocal buftype=
+let g:ctrlp_reuse_window = 'startify'
+set sessionoptions=blank,curdir,folds,tabpages,winpos

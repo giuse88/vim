@@ -278,8 +278,8 @@ set nocompatible
         map <C-k> <C-u>
 
         " Treat wrapped lines as normal lines
-        " nnoremap j gj
-        " nnoremap k gk
+        nnoremap j gj
+        nnoremap k gk
 
         " We don't need any help!
         inoremap <F1> <nop>
@@ -359,15 +359,15 @@ set nocompatible
         """ }}}
         """ Toggle text wrapping, wrap on whole words
         """ For more info see: http://stackoverflow.com/a/2470885/1076493 {{{
-   """         function! WrapToggle()
-    """             if &wrap
-    """                 set list
-    """                 set nowrap
-    """             else
-    """                 set nolist
-      """               set wrap
-      """           endif
-      """       endfunction
+            function! WrapToggle()
+                if &wrap
+                    set list
+                    set nowrap
+                else
+                    set nolist
+                  set wrap
+               endif
+            endfunction
 
             nnoremap <leader>w :call WrapToggle()<CR>
         """ }}}

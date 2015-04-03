@@ -1,5 +1,5 @@
 "This awesome color scheme
-colorscheme gruvbox
+"colorscheme gruvbox
 
 " Mappings 
 imap jj <Esc>   " Press i to enter insert mode, and jj to exit.
@@ -35,6 +35,7 @@ cmap w!! w !sudo tee > /dev/null %
 """""""""""""""""""""""""""""""""""""""""
 let NERDTreeChDirMode=2
 map <leader>n :NERDTreeToggle<CR>
+nmap <leader>m :NERDTreeFind<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " COPY and Paste from the clipboard register " 
@@ -90,3 +91,8 @@ map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
+
+set tabstop=2       " The width of a TAB is set to 2g.
+set shiftwidth=2    " Indents will have a width of 2g
+set softtabstop=2   " Sets the number of columns for a TAB
+set expandtab       " Expand TABs to spaces

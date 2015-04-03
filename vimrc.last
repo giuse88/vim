@@ -2,7 +2,10 @@
 "colorscheme gruvbox
 
 " Mappings 
-imap jj <Esc>   " Press i to enter insert mode, and jj to exit.
+ino jj <esc>
+cno jj <c-c>
+vno v <esc>
+
 map tt :tabnew <Enter>  "Open new tab
 
 " Syntatic 

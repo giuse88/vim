@@ -53,14 +53,8 @@ set nocompatible
     " Autoclose (, " etc
     Plugin 'Townk/vim-autoclose'
 
-    " Git wrapper inside Vim
-    Plugin 'tpope/vim-fugitive'
-
     " Handle surround chars like ''
     Plugin 'tpope/vim-surround'
-
-    " Align your = etc.
-    Plugin 'vim-scripts/Align'
 
     " Snippets like textmate
     Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -77,10 +71,6 @@ set nocompatible
     " Awesome syntax checker.
     " REQUIREMENTS: See :h syntastic-intro
     Plugin 'scrooloose/syntastic'
-
-    " Functions, class data etc.
-    " REQUIREMENTS: (exuberant)-ctags
-    Plugin 'majutsushi/tagbar'
 
     " Finish Vundle stuff
     call vundle#end()
@@ -484,12 +474,6 @@ set nocompatible
             \     'fileencoding' : 'MyFileencoding',
             \     'filetype'     : 'MyFiletype'
             \ },
-            \ 'component_expand': {
-            \     'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \     'syntastic': 'middle',
-            \ },
             \ 'subseparator': {
             \     'left': '|', 'right': '|'
             \ }
@@ -513,18 +497,6 @@ set nocompatible
             return fname == '__Tagbar__' ? 'Tagbar' :
                     \ fname == 'ControlP' ? 'CtrlP' :
                     \ winwidth('.') > 60 ? lightline#mode() : ''
-        endfunction
-
-        function! MyFugitive()
-            try
-                if expand('%:t') !~? 'Tagbar' && exists('*fugitive#head')
-                    let mark = '± '
-                    let _ = fugitive#head()
-                    return strlen(_) ? mark._ : ''
-                endif
-            catch
-            endtry
-            return ''
         endfunction
 
         function! MyReadonly()
@@ -591,23 +563,6 @@ set nocompatible
 
         let g:tagbar_status_func = 'TagbarStatusFunc'
 
-        function! TagbarStatusFunc(current, sort, fname, ...) abort
-            let g:lightline.fname = a:fname
-            return lightline#statusline(0)
-        endfunction
-
-      function! s:syntastic()
-           SyntasticCheck
-           call lightline#update()
-        endfunction
-
-        augroup AutoSyntastic
-            autocmd!
-            execute "autocmd FileType " .
-                        \join(g:syntastic_mode_map["active_filetypes"], ",") .
-                        \" autocmd BufWritePost <buffer> :call s:syntastic()"
-        augroup END
-    """ }}}
 """ }}}
 """ Local ending config, will overwrite anything above. Generally use this. {{{{
     if filereadable($HOME."/.vimrc.last")

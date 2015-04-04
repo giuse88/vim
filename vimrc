@@ -60,7 +60,7 @@ set nocompatible
     Plugin 'tpope/vim-surround'
 
     " Align your = etc.
-"    Plugin 'vim-scripts/Align'
+    Plugin 'vim-scripts/Align'
 
     " Snippets like textmate
     Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -377,21 +377,6 @@ set nocompatible
             endfunction
 
             nnoremap <leader>ld :call DeleteMultipleEmptyLines()<CR>
-        """ }}}
-        """ Split to relative header/source {{{
-            function! SplitRelSrc()
-                let s:fname = expand("%:t:r")
-
-                if expand("%:e") == "h"
-                    set nosplitright
-                    exe "vsplit" fnameescape(s:fname . ".cpp")
-                    set splitright
-                elseif expand("%:e") == "cpp"
-                    exe "vsplit" fnameescape(s:fname . ".h")
-                endif
-            endfunction
-
-            nnoremap <leader>le :call SplitRelSrc()<CR>
         """ }}}
         """ Strip trailing whitespace, return to cursor at save {{{
             function! <SID>StripTrailingWhitespace()

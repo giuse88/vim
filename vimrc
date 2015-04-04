@@ -611,9 +611,9 @@ set nocompatible
             return lightline#statusline(0)
         endfunction
 
-        function! s:syntastic()
-            SyntasticCheck
-            call lightline#update()
+      function! s:syntastic()
+           SyntasticCheck
+           call lightline#update()
         endfunction
 
         augroup AutoSyntastic

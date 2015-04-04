@@ -1,9 +1,3 @@
-"-----------------------------------------------"
-" Author:       Tim Sæterøy                     "
-" Homepage:     http://thevoid.no               "
-" Source:       http://github.com/timss/vimconf "
-"-----------------------------------------------"
-
 " vimconf is not vi-compatible
 set nocompatible
 
@@ -43,9 +37,6 @@ set nocompatible
     " Edit files using sudo/su
     Plugin 'chrisbra/SudoEdit.vim'
 
-    " <Tab> everything!
-    Plugin 'ervandew/supertab'
-
     " Fuzzy finder (files, mru, etc)
     Plugin 'kien/ctrlp.vim'
 
@@ -54,9 +45,6 @@ set nocompatible
     Plugin 'bling/vim-bufferline'
 
     " Easy... motions... yeah.
-    Plugin 'Lokaltog/vim-easymotion'
-
-    " Glorious colorscheme
     Plugin 'nanotech/jellybeans.vim'
 
     " Super easy commenting, toggle comments etc
@@ -72,7 +60,7 @@ set nocompatible
     Plugin 'tpope/vim-surround'
 
     " Align your = etc.
-    Plugin 'vim-scripts/Align'
+"    Plugin 'vim-scripts/Align'
 
     " Snippets like textmate
     Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -176,7 +164,7 @@ set nocompatible
     set linebreak                                   " don't cut words on wrap
     set listchars=tab:>\                            " > to highlight <tab>
     set list                                        " displaying listchars
-    set mouse=                                      " disable mouse
+    """set mouse=                                      " disable mouse
     set noshowmode                                  " hide mode cmd line
     set noexrc                                      " don't use other .*rc(s)
     set nostartofline                               " keep cursor column pos
@@ -189,6 +177,8 @@ set nocompatible
     set ttymouse=xterm2                             " experimental
     """ Folding {{{
         set foldcolumn=0                            " hide folding column
+        set foldmethod=indent                       " folds using indent
+        set foldnestmax=10                          " max 10 nested folds
         set foldmethod=indent                       " folds using indent
         set foldnestmax=10                          " max 10 nested folds
         set foldlevelstart=99                       " folds open by default
@@ -250,11 +240,11 @@ set nocompatible
     set ignorecase                                  " by default ignore case
     set nrformats+=alpha                            " incr/decr letters C-a/-x
     set shiftround                                  " be clever with tabs
-    set shiftwidth=4                                " default 8
+    set shiftwidth=2                                " default 8
     set smartcase                                   " sensitive with uppercase
     set smarttab                                    " tab to 0,4,8 etc.
-    set softtabstop=4                               " "tab" feels like <tab>
-    set tabstop=4                                   " replace <TAB> w/4 spaces
+    set softtabstop=2                               " "tab" feels like <tab>
+    set tabstop=2                                   " replace <TAB> w/4 spaces
     """ Only auto-comment newline for block comments {{{
         augroup AutoBlockComment
             autocmd! FileType c,cpp setlocal comments -=:// comments +=f://
@@ -262,15 +252,13 @@ set nocompatible
     """ }}}
     """ Take comment leaders into account when joining lines, :h fo-table
     """ http://ftp.vim.org/pub/vim/patches/7.3/7.3.541 {{{
-        if has("patch-7.3.541")
-            set formatoptions+=j
-        endif
+      if has("patch-7.3.541")
+        set formatoptions+=j
+      endif
     """ }}}
 """ }}}
 """ Keybindings {{{
     """ General {{{
-        " Remap <leader>
-        "let mapleader=","
 
         " Quickly edit/source .vimrc
         noremap <leader>ve :edit $HOME/.vimrc<CR>
@@ -278,10 +266,6 @@ set nocompatible
 
         " Yank(copy) to system clipboard
         noremap <leader>y "+y
-
-        " Toggle folding
-        nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-        vnoremap <Space> zf
 
         " Bubbling (bracket matching)
         nmap <C-up> [e
@@ -381,8 +365,8 @@ set nocompatible
                     set nowrap
                 else
                     set nolist
-                    set wrap
-                endif
+                  set wrap
+               endif
             endfunction
 
             nnoremap <leader>w :call WrapToggle()<CR>
@@ -445,10 +429,16 @@ set nocompatible
         \ $HOME . "/.vimrc.last", $HOME . "/.vimrc.plugins"
         \ ]
     let g:startify_custom_header = [
-        \ '   Author:      Tim Sæterøy',
-        \ '   Homepage:    http://thevoid.no',
-        \ '   Source:      http://github.com/timss/vimconf',
-        \ ''
+          \'                          ___      ___ ___  _____ ______       ',
+          \'                         |\  \    /  /|\  \|\   _ \  _   \     ',
+          \'                         \ \  \  /  / | \  \ \  \\\__\ \  \    ', 
+          \'                          \ \  \/  / / \ \  \ \  \\|__| \  \   ',
+          \'                           \ \    / /   \ \  \ \  \    \ \  \  ',
+          \'                            \ \__/ /     \ \__\ \__\    \ \__\ ',
+          \'                             \|__|/       \|__|\|__|     \|__| ',
+          \'',
+          \'',
+          \'',        
         \ ]
 
     " CtrlP - don't recalculate files on start (slow)
@@ -456,9 +446,9 @@ set nocompatible
     let g:ctrlp_working_path_mode = 'ra'
 
     " TagBar
-    let g:tagbar_left = 0
-    let g:tagbar_width = 30
-    set tags=tags;/
+ """    let g:tagbar_left = 0
+ """    let g:tagbar_width = 30
+ """    set tags=tags;/
 
     " Syntastic - This is largely up to your own usage, and override these
     "             changes if be needed. This is merely an exemplification.
@@ -467,7 +457,7 @@ set nocompatible
     let g:syntastic_mode_map = {
         \ 'mode': 'passive',
         \ 'active_filetypes':
-            \ ['c', 'cpp', 'perl', 'python', 'sh', 'javascript'] }
+            \ ['javascript'] }
 
     " Netrw - the bundled (network) file and directory browser
     let g:netrw_banner = 0

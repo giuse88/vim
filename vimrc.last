@@ -4,7 +4,6 @@
 " Mappings 
 ino jj <esc>
 cno jj <c-c>
-vno v <esc>
 
 map tt :tabnew <Enter>  "Open new tab
 

@@ -258,10 +258,10 @@ set nocompatible
         noremap <leader>y "+y
 
         " Bubbling (bracket matching)
-        nmap <C-up> [e
-        nmap <C-down> ]e
-        vmap <C-up> [egv
-        vmap <C-down> ]egv
+   "     nmap <C-up> [e
+  "      nmap <C-down> ]e
+  "      vmap <C-up> [egv
+  "      vmap <C-down> ]egv
 
         " Scroll up/down lines from 'scroll' option, default half a screen
         map <C-j> <C-d>
@@ -285,24 +285,6 @@ set nocompatible
         nnoremap gd :bdelete<CR>
         nnoremap gf <C-^>
     """ }}}
-    """ Functions and/or fancy keybinds {{{{
-        """ Vim motion on next found object like ci", but for ([{< etc
-        """ - http://stackoverflow.com/a/14651443/1076493
-        """ Based on gist by @AndrewRadev
-        """ - https://gist.github.com/AndrewRadev/1171559
-        """ For a crazier version with directions, more objects etc. see
-        """ - https://bitbucket.org/sjl/dotfiles/src/default/vim/vimrc {{{
-            function! s:NextTextObject(motion)
-                echo
-                let c = nr2char(getchar())
-                exe "normal! f".c."v".a:motion.c
-            endfunction
-
-            onoremap a :<C-u>call <SID>NextTextObject('a')<CR>
-            xnoremap a :<C-u>call <SID>NextTextObject('a')<CR>
-            onoremap i :<C-u>call <SID>NextTextObject('i')<CR>
-            xnoremap i :<C-u>call <SID>NextTextObject('i')<CR>
-        """ }}}
         """ Toggle syntax highlighting {{{
             function! ToggleSyntaxHighlighthing()
                 if exists("g:syntax_on")
@@ -420,15 +402,8 @@ set nocompatible
     let g:ctrlp_clear_cache_on_exit = 0
     let g:ctrlp_working_path_mode = 'ra'
 
-    " TagBar
- """    let g:tagbar_left = 0
- """    let g:tagbar_width = 30
- """    set tags=tags;/
-
     " Syntastic - This is largely up to your own usage, and override these
     "             changes if be needed. This is merely an exemplification.
-    let g:syntastic_cpp_check_header = 1
-    let g:syntastic_cpp_compiler_options = ' -std=c++0x'
     let g:syntastic_mode_map = {
         \ 'mode': 'passive',
         \ 'active_filetypes':

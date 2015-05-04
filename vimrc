@@ -54,7 +54,7 @@ set nocompatible
     Plugin 'Townk/vim-autoclose'
 
     " Handle surround chars like ''
-    Plugin 'tpope/vim-surround'
+"    Plugin 'tpope/vim-surround'
 
     " Snippets like textmate
     Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -176,6 +176,7 @@ set nocompatible
     """ Search and replace {{{
         set gdefault                                " default s//g (global)
         set incsearch                               " "live"-search
+        set hlsearch
     """ }}}
     """ Matching {{{
         set matchtime=2                             " time to blink match {}
@@ -192,7 +193,6 @@ set nocompatible
     """ }}}
 """ }}}
 """ Files {{{
-    set autochdir                                   " always use curr. dir.
     set autoread                                    " refresh if changed
     set confirm                                     " confirm changed files
     set noautowrite                                 " never autowrite
@@ -379,8 +379,7 @@ set nocompatible
     """ }}}
 """ }}}
 """ Plugin settings {{{
-    " Startify, the fancy start page
-    let g:ctrlp_reuse_window = 'startify' " don't split in startify
+
     let g:startify_bookmarks = [
         \ $HOME . "/.vimrc", $HOME . "/.vimrc.first",
         \ $HOME . "/.vimrc.last", $HOME . "/.vimrc.plugins"
@@ -397,10 +396,6 @@ set nocompatible
           \'',
           \'',        
         \ ]
-
-    " CtrlP - don't recalculate files on start (slow)
-    let g:ctrlp_clear_cache_on_exit = 0
-    let g:ctrlp_working_path_mode = 'ra'
 
     " Syntastic - This is largely up to your own usage, and override these
     "             changes if be needed. This is merely an exemplification.

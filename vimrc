@@ -139,7 +139,7 @@ set nocompatible
             " set fileencoding=utf-8                " default none
         """ }}}
         """ Gvim {{{
-            set guifont=DejaVu\ Sans\ Mono\ 9
+            set guifont=Monaco:h12
             set guioptions-=m                       " remove menubar
             set guioptions-=T                       " remove toolbar
             set guioptions-=r                       " remove right scrollbar

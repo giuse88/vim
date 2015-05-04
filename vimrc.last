@@ -144,3 +144,20 @@ set listchars=tab:▸\              " a tab should display as "▸" "
 set listchars+=trail:·            " show trailing spaces as "·"  "
 set listchars+=extends:◄          " The character to show in the last column when wrap is off and the line continues beyond the right of the screen
 set listchars+=precedes:►         " The character to show in the last column when wrap is off and the line continues beyond the right of the screen  "
+
+"Use TAB to complete when typing words, else inserts TABs as usual.
+"Uses dictionary and source files to find matching words to complete.
+
+"See help completion for source,
+"Note: usual completion is on <C-n> but more trouble to press all the time.
+"Never type the same word twice and maybe learn a new spellings!
+"Use the Linux dictionary when spelling is in doubt.
+"Window users can copy the file to their machine.
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>

@@ -172,3 +172,5 @@ if has("gui_running")
     colorscheme gruvbox
 endif
 
+vnoremap > >gv
+vnoremap < <gv

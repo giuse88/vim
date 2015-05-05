@@ -90,7 +90,7 @@ set nocompatible
 """ }}}
 """ User interface {{{
     """ Syntax highlighting {{{
-        filetype plugin indent on                   " detect file plugin+indent
+        " filetype plugin indent on                   " detect file plugin+indent
         syntax on                                   " syntax highlighting
         set background=dark                         " we're using a dark bg
         colorscheme jellybeans                      " colorscheme from plugin
@@ -223,7 +223,7 @@ set nocompatible
     """ }}}
 """ }}}
 """ Text formatting {{{
-    set autoindent                                  " preserve indentation
+    " set autoindent                                  " preserve indentation
     set backspace=indent,eol,start                  " smart backspace
     set cinkeys-=0#                                 " don't force # indentation
     set expandtab                                   " no real tabs
@@ -233,6 +233,8 @@ set nocompatible
     set shiftwidth=2                                " default 8
     set smartcase                                   " sensitive with uppercase
     set smarttab                                    " tab to 0,4,8 etc.
+    set smartindent
+    set cindent
     set softtabstop=2                               " "tab" feels like <tab>
     set tabstop=2                                   " replace <TAB> w/4 spaces
     """ Only auto-comment newline for block comments {{{

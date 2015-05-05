@@ -174,3 +174,5 @@ endif
 
 vnoremap > >gv
 vnoremap < <gv
+
+let g:js_indent_log = 1

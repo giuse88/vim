@@ -179,3 +179,12 @@ vnoremap < <gv
 let g:js_indent_log = 1
 
 let NERDSpaceDelims=1
+
+" Syntax complete"
+
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+    \ if &omnifunc == "" |
+    \   setlocal omnifunc=syntaxcomplete#Complete |
+    \ endif
+endif

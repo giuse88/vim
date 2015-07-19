@@ -307,7 +307,7 @@ set nocompatible
         """ your own in .vimrc.last which might set for example colorcolumn or
         """ even the textwidth. See https://github.com/timss/vimconf/pull/4 {{{
             let g:overlength_enabled = 0
-            highlight OverLength ctermbg=238 guibg=#444444
+            highlight OverLength ctermbg=238 guibg=#C9664D
 
             function! ToggleOverLength()
                 if g:overlength_enabled == 0

@@ -41,8 +41,8 @@ set nocompatible
     Plugin 'kien/ctrlp.vim'
 
     " A pretty statusline, bufferline integration
-    Plugin 'itchyny/lightline.vim'
-    Plugin 'bling/vim-bufferline'
+"    Plugin 'itchyny/lightline.vim'
+"    Plugin 'bling/vim-bufferline'
 
     " Easy... motions... yeah.
     Plugin 'nanotech/jellybeans.vim'
@@ -421,50 +421,50 @@ set nocompatible
     augroup END
 
     """ Lightline {{{
-        let g:lightline = {
-            \ 'colorscheme': 'jellybeans',
-            \ 'active': {
-            \     'left': [
-            \         ['mode', 'paste'],
-            \         ['readonly', 'fugitive'],
-            \         ['ctrlpmark', 'bufferline']
-            \     ],
-            \     'right': [
-            \         ['lineinfo'],
-            \         ['percent'],
-            \         ['fileformat', 'fileencoding', 'filetype', 'syntastic']
-            \     ]
-            \ },
-            \ 'component': {
-            \     'paste': '%{&paste?"!":""}'
-            \ },
-            \ 'component_function': {
-            \     'mode'         : 'MyMode',
-            \     'fugitive'     : 'MyFugitive',
-            \     'readonly'     : 'MyReadonly',
-            \     'ctrlpmark'    : 'CtrlPMark',
-            \     'bufferline'   : 'MyBufferline',
-            \     'fileformat'   : 'MyFileformat',
-            \     'fileencoding' : 'MyFileencoding',
-            \     'filetype'     : 'MyFiletype'
-            \ },
-            \ 'subseparator': {
-            \     'left': '|', 'right': '|'
-            \ }
-            \ }
-
-        let g:lightline.mode_map = {
-            \ 'n'      : ' N ',
-            \ 'i'      : ' I ',
-            \ 'R'      : ' R ',
-            \ 'v'      : ' V ',
-            \ 'V'      : 'V-L',
-            \ 'c'      : ' C ',
-            \ "\<C-v>" : 'V-B',
-            \ 's'      : ' S ',
-            \ 'S'      : 'S-L',
-            \ "\<C-s>" : 'S-B',
-            \ '?'      : '      ' }
+"        let g:lightline = {
+"            \ 'colorscheme': 'jellybeans',
+"            \ 'active': {
+"            \     'left': [
+"            \         ['mode', 'paste'],
+"            \         ['readonly', 'fugitive'],
+"            \         ['ctrlpmark', 'bufferline']
+"            \     ],
+"            \     'right': [
+"            \         ['lineinfo'],
+"            \         ['percent'],
+"            \         ['fileformat', 'fileencoding', 'filetype', 'syntastic']
+"            \     ]
+"            \ },
+"            \ 'component': {
+"            \     'paste': '%{&paste?"!":""}'
+"            \ },
+"            \ 'component_function': {
+"            \     'mode'         : 'MyMode',
+"            \     'fugitive'     : 'MyFugitive',
+"            \     'readonly'     : 'MyReadonly',
+"            \     'ctrlpmark'    : 'CtrlPMark',
+"            \     'bufferline'   : 'MyBufferline',
+"            \     'fileformat'   : 'MyFileformat',
+"            \     'fileencoding' : 'MyFileencoding',
+"            \     'filetype'     : 'MyFiletype'
+"            \ },
+"            \ 'subseparator': {
+"            \     'left': '|', 'right': '|'
+"            \ }
+"            \ }
+"
+"        let g:lightline.mode_map = {
+"            \ 'n'      : ' N ',
+"            \ 'i'      : ' I ',
+"            \ 'R'      : ' R ',
+"            \ 'v'      : ' V ',
+"            \ 'V'      : 'V-L',
+"            \ 'c'      : ' C ',
+"            \ "\<C-v>" : 'V-B',
+"            \ 's'      : ' S ',
+"            \ 'S'      : 'S-L',
+"            \ "\<C-s>" : 'S-B',
+"            \ '?'      : '      ' }
 
         function! MyMode()
             let fname = expand('%:t')
@@ -518,24 +518,24 @@ set nocompatible
             return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
         endfunction
 
-        let g:ctrlp_status_func = {
-            \ 'main': 'CtrlPStatusFunc_1',
-            \ 'prog': 'CtrlPStatusFunc_2',
-            \ }
-
-        function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-            let g:lightline.ctrlp_regex = a:regex
-            let g:lightline.ctrlp_prev = a:prev
-            let g:lightline.ctrlp_item = a:item
-            let g:lightline.ctrlp_next = a:next
-            return lightline#statusline(0)
-        endfunction
-
-        function! CtrlPStatusFunc_2(str)
-            return lightline#statusline(0)
-        endfunction
-
-        let g:tagbar_status_func = 'TagbarStatusFunc'
+"        let g:ctrlp_status_func = {
+""            \ 'main': 'CtrlPStatusFunc_1',
+"            \ 'prog': 'CtrlPStatusFunc_2',
+"            \ }
+"
+"        function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+"            let g:lightline.ctrlp_regex = a:regex
+"            let g:lightline.ctrlp_prev = a:prev
+"            let g:lightline.ctrlp_item = a:item
+"            let g:lightline.ctrlp_next = a:next
+"            return lightline#statusline(0)
+"        endfunction
+"
+"        function! CtrlPStatusFunc_2(str)
+"            return lightline#statusline(0)
+"        endfunction
+"
+"        let g:tagbar_status_func = 'TagbarStatusFunc'
 
 """ }}}
 """ Local ending config, will overwrite anything above. Generally use this. {{{{

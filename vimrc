@@ -116,7 +116,8 @@ set nocompatible
                 highlight LineNr ctermbg=NONE
                 highlight SignColumn ctermbg=NONE
                 highlight SignColumn guibg=#151515
-                highlight CursorLine ctermbg=235
+                highlight CursorLine term=bold cterm=bold ctermbg=235 gui=bold guibg=#333333
+                highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
             endfunction
 
             call CustomHighlighting()
@@ -141,7 +142,7 @@ set nocompatible
             " set fileencoding=utf-8                " default none
         """ }}}
         """ Gvim {{{
-            set guifont=Monaco:h12
+            set guifont=Inconsolata:h14
             set guioptions-=m                       " remove menubar
             set guioptions-=T                       " remove toolbar
             set guioptions-=r                       " remove right scrollbar

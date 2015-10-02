@@ -36,6 +36,7 @@ set nocompatible
 
     " Edit files using sudo/su
     Plugin 'chrisbra/SudoEdit.vim'
+    Plugin 'derekwyatt/vim-scala'
 
     " Fuzzy finder (files, mru, etc)
     Plugin 'kien/ctrlp.vim'
@@ -177,7 +178,7 @@ set nocompatible
         set foldlevelstart=99                       " folds open by default
     """ }}}
     """ Search and replace {{{
-        set gdefault                                " default s//g (global)
+        " set gdefault                                " default s//g (global)
         set incsearch                               " "live"-search
         set hlsearch
     """ }}}

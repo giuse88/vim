@@ -201,3 +201,4 @@ function! s:delete_hidden_buffers()
 endfunction
 
 nnoremap <silent> <leader>bd :call <SID>delete_hidden_buffers()<CR>
+com! FormatJSON %!python -m json.tool

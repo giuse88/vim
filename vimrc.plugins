@@ -13,4 +13,4 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'mhinz/vim-startify'
 Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/syntastic'
-
+Plugin 'HerringtonDarkholme/vim-worksheet'

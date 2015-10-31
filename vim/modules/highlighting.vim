@@ -1,5 +1,7 @@
 set background=dark
 
+syntax on
+
 if (&term =~ "xterm") || (&term =~ "screen")
     set t_Co=256
 endif
@@ -15,6 +17,7 @@ function! s:custom_highlighting()
   highlight SpellLocal cterm=underline
   highlight SpellRare cterm=underline
 
+  highlight OverLength ctermbg=238 guibg=#C9664D
   highlight Normal ctermbg=NONE
   highlight NonText ctermbg=NONE
   highlight LineNr ctermbg=NONE

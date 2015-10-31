@@ -16,3 +16,5 @@ call vundle#end()
 for file in split(glob(Dot('modules/plugins/*.vim')), '\n')
   exec 'source' file
 endfor
+
+filetype plugin indent on

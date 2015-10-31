@@ -201,8 +201,73 @@ function! s:delete_hidden_buffers()
 endfunction
 
 nnoremap <silent> <leader>bd :call <SID>delete_hidden_buffers()<CR>
+
+" au BufRead,BufNewFile *.scalaws set filetype=scala
+" au BufRead,BufNewFile *.scalaws imap <silent> <CR> <c-o>:call DoREPL()<CR>
+"
+"
+
+function! AppendHello ()
+
+  let __scala_input__ = bufnr('%')
+
+  if !exists('g:__scala_output__')
+    let g:__scala_output__ = ScratchBuffer()
+  endif
+
+  if !exists('g:__scala_started__')
+    let g:__scala_started__ = 1
+python << EOF
+from subprocess import Popen, PIPE
+scala = Popen(["scala"], stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
+print("scala started")
+EOF
+  endif
+
+python << EOF
+import vim
+global scala
+output_buf = int(vim.eval('g:__scala_output__'))
+input_buf = int(vim.eval('__scala_input__'))
+output_buf = vim.buffers[output_buf]
+input_buf= vim.buffers[input_buf]
+
+del output_buf[0:len(output_buf)]
+
+def clean():
+    while True:
+        line = scala.stdout.readline()
+        if not line.strip():
+            break
+
+def result():
+    scala.stdout.flush()
+    scala.stdout.readline()
+    return scala.stdout.readline()
+
+def run(command):
+    scala.stdin.write(command+"\n")
+
+for index, line in enumerate(input_buf):
+  clean()
+  scala.stdin.write(line + "\n")
+  run(line + "\n")
+  output_buf.append(result())
+EOF
+
+endfunction
+
+function! ScratchBuffer()
+  vsplit __scala_output__
+  normal! ggdG
+  setlocal nobuflisted
+  setlocal bufhidden=wipe 
+  setlocal noswapfile
+  setlocal buftype=nofile
+  return bufnr('%')
+endfunction
+
 com! FormatJSON %!python -m json.tool
 
 nnoremap <silent> > :bnext<CR>
 nnoremap <silent> < :bprevious<CR>
-

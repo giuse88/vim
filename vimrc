@@ -8,25 +8,17 @@ set nocompatible
     if !filereadable($HOME . "/.vimrc.first") | call system("touch $HOME/.vimrc.first") | endif
     if !filereadable($HOME . "/.vimrc.last") | call system("touch $HOME/.vimrc.last") | endif
 """ }}}
+
 """ Vundle plugin manager {{{
     """ Automatically setting up Vundle, taken from
     """ http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/ {{{
-        let has_vundle=1
-        if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
-            echo "Installing Vundle..."
-            echo ""
-            silent !mkdir -p $HOME/.vim/bundle
-            silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-            let has_vundle=0
-        endif
-    """ }}}
     """ Initialize Vundle {{{
         filetype off                                " required to init
         set rtp+=$HOME/.vim/bundle/Vundle.vim       " include vundle
         call vundle#begin()                         " init vundle
     """ }}}
     """ Github repos, uncomment to disable a plugin {{{
-    Plugin 'gmarik/Vundle.vim'
+        Plugin 'gmarik/Vundle.vim'
 
     """ Local plugins (and only plugins in this file!) {{{{
         if filereadable($HOME."/.vimrc.plugins")
@@ -34,54 +26,11 @@ set nocompatible
         endif
     """ }}}
 
-    " Edit files using sudo/su
-    Plugin 'chrisbra/SudoEdit.vim'
-
-    " Fuzzy finder (files, mru, etc)
-    Plugin 'kien/ctrlp.vim'
-
-    " A pretty statusline, bufferline integration
-"    Plugin 'itchyny/lightline.vim'
-"    Plugin 'bling/vim-bufferline'
-
-    " Easy... motions... yeah.
-    Plugin 'nanotech/jellybeans.vim'
-
-    " Super easy commenting, toggle comments etc
-    Plugin 'scrooloose/nerdcommenter'
-
-    " Autoclose (, " etc
-    Plugin 'Townk/vim-autoclose'
-
-    " Handle surround chars like ''
-"    Plugin 'tpope/vim-surround'
-
-    " Snippets like textmate
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'honza/vim-snippets'
-    Plugin 'garbas/vim-snipmate'
-
-    " A fancy start screen, shows MRU etc.
-    Plugin 'mhinz/vim-startify'
-
-    " Vim signs (:h signs) for modified lines based off VCS (e.g. Git)
-    Plugin 'mhinz/vim-signify'
-
-    " Awesome syntax checker.
-    " REQUIREMENTS: See :h syntastic-intro
-    Plugin 'scrooloose/syntastic'
-
     " Finish Vundle stuff
     call vundle#end()
 
-    """ Installing plugins the first time, quits when done {{{
-        if has_vundle == 0
-            :silent! PluginInstall
-            :qa
-        endif
-    """ }}}
 """ }}}
+
 """ Local leading config, only use for prerequisites as it will be
 """ overwritten by anything below {{{{
     if filereadable($HOME."/.vimrc.first")
@@ -90,7 +39,7 @@ set nocompatible
 """ }}}
 """ User interface {{{
     """ Syntax highlighting {{{
-        " filetype plugin indent on                   " detect file plugin+indent
+        filetype plugin indent on                   " detect file plugin+indent
         syntax on                                   " syntax highlighting
         set background=dark                         " we're using a dark bg
         colorscheme jellybeans                      " colorscheme from plugin
@@ -102,6 +51,10 @@ set nocompatible
                 autocmd BufNewFile,BufRead *.txt set ft=sh tw=79
                 autocmd BufNewFile,BufRead *.js set ft=javascript tw=79
                 autocmd BufNewFile,BufRead *.jsx set ft=javascript tw=79
+                autocmd BufNewFile,BufRead *.sc set ft=scala tw=79
+                autocmd BufNewFile,BufRead *.scala set ft=scala tw=79
+                autocmd BufNewFile,BufRead *.ws ft=scala tw=79
+                autocmd BufNewFile,BufRead *.scalaws ft=scala tw=79
             augroup END
         """ }}}
         """ 256 colors for maximum jellybeans bling. See commit log for info {{{
@@ -177,7 +130,7 @@ set nocompatible
         set foldlevelstart=99                       " folds open by default
     """ }}}
     """ Search and replace {{{
-        set gdefault                                " default s//g (global)
+        " set gdefault                                " default s//g (global)
         set incsearch                               " "live"-search
         set hlsearch
     """ }}}
@@ -226,29 +179,28 @@ set nocompatible
     """ }}}
 """ }}}
 """ Text formatting {{{
-    " set autoindent                                  " preserve indentation
-    set backspace=indent,eol,start                  " smart backspace
-    set cinkeys-=0#                                 " don't force # indentation
-    set expandtab                                   " no real tabs
-    set ignorecase                                  " by default ignore case
-    set nrformats+=alpha                            " incr/decr letters C-a/-x
-    set shiftround                                  " be clever with tabs
-    set shiftwidth=2                                " default 8
-    set smartcase                                   " sensitive with uppercase
-    set smarttab                                    " tab to 0,4,8 etc.
-    set smartindent
-    set cindent
-    set softtabstop=2                               " "tab" feels like <tab>
-    set tabstop=2                                   " replace <TAB> w/4 spaces
-    """ Only auto-comment newline for block comments {{{
-        augroup AutoBlockComment
-            autocmd! FileType c,cpp setlocal comments -=:// comments +=f://
-        augroup END
-    """ }}}
-    """ Take comment leaders into account when joining lines, :h fo-table
-    """ http://ftp.vim.org/pub/vim/patches/7.3/7.3.541 {{{
+     set autoindent                                  " preserve indentation
+     set backspace=indent,eol,start                  " smart backspace
+     set cinkeys-=0#                                 " don't force # indentation
+     set expandtab                                   " no real tabs
+     set ignorecase                                  " by default ignore case
+     set nrformats+=alpha                            " incr/decr letters C-a/-x
+     set shiftround                                  " be clever with tabs
+     set shiftwidth=2                                " default 8
+     set smartcase                                   " sensitive with uppercase
+     set smarttab                                    " tab to 0,4,8 etc.
+     set smartindent
+     set softtabstop=2                               " "tab" feels like <tab>
+     set tabstop=2                                   " replace <TAB> w/4 spaces
+     """ Only auto-comment newline for block comments {{{
+     """ augroup AutoBlockComment
+         """ autocmd! FileType c,cpp setlocal comments -=:// comments +=f://
+     """ augroup END
+     """ }}}
+     """ Take comment leaders into account when joining lines, :h fo-table
+     """ http://ftp.vim.org/pub/vim/patches/7.3/7.3.541 {{{
       if has("patch-7.3.541")
-        set formatoptions+=j
+       set formatoptions+=j
       endif
     """ }}}
 """ }}}
@@ -539,8 +491,8 @@ set nocompatible
 "        let g:tagbar_status_func = 'TagbarStatusFunc'
 
 """ }}}
-""" Local ending config, will overwrite anything above. Generally use this. {{{{
-    if filereadable($HOME."/.vimrc.last")
-        source $HOME/.vimrc.last
-    endif
+ """ Local ending config, will overwrite anything above. Generally use this. {{{{
+     if filereadable($HOME."/.vimrc.last")
+         source $HOME/.vimrc.last
+     endif
 """ }}}

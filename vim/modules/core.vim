@@ -156,12 +156,6 @@
         " Yank(copy) to system clipboard
         noremap <leader>y "+y
 
-        " Bubbling (bracket matching)
-   "     nmap <C-up> [e
-  "      nmap <C-down> ]e
-  "      vmap <C-up> [egv
-  "      vmap <C-down> ]egv
-
         " Scroll up/down lines from 'scroll' option, default half a screen
         map <C-j> <C-d>
         map <C-k> <C-u>
@@ -315,59 +309,6 @@
         autocmd InsertLeave * if pumvisible() == 0|pclose|endif
     augroup END
 
-    """ Lightline {{{
-"        let g:lightline = {
-"            \ 'colorscheme': 'jellybeans',
-"            \ 'active': {
-"            \     'left': [
-"            \         ['mode', 'paste'],
-"            \         ['readonly', 'fugitive'],
-"            \         ['ctrlpmark', 'bufferline']
-"            \     ],
-"            \     'right': [
-"            \         ['lineinfo'],
-"            \         ['percent'],
-"            \         ['fileformat', 'fileencoding', 'filetype', 'syntastic']
-"            \     ]
-"            \ },
-"            \ 'component': {
-"            \     'paste': '%{&paste?"!":""}'
-"            \ },
-"            \ 'component_function': {
-"            \     'mode'         : 'MyMode',
-"            \     'fugitive'     : 'MyFugitive',
-"            \     'readonly'     : 'MyReadonly',
-"            \     'ctrlpmark'    : 'CtrlPMark',
-"            \     'bufferline'   : 'MyBufferline',
-"            \     'fileformat'   : 'MyFileformat',
-"            \     'fileencoding' : 'MyFileencoding',
-"            \     'filetype'     : 'MyFiletype'
-"            \ },
-"            \ 'subseparator': {
-"            \     'left': '|', 'right': '|'
-"            \ }
-"            \ }
-"
-"        let g:lightline.mode_map = {
-"            \ 'n'      : ' N ',
-"            \ 'i'      : ' I ',
-"            \ 'R'      : ' R ',
-"            \ 'v'      : ' V ',
-"            \ 'V'      : 'V-L',
-"            \ 'c'      : ' C ',
-"            \ "\<C-v>" : 'V-B',
-"            \ 's'      : ' S ',
-"            \ 'S'      : 'S-L',
-"            \ "\<C-s>" : 'S-B',
-"            \ '?'      : '      ' }
-
-        function! MyMode()
-            let fname = expand('%:t')
-            return fname == '__Tagbar__' ? 'Tagbar' :
-                    \ fname == 'ControlP' ? 'CtrlP' :
-                    \ winwidth('.') > 60 ? lightline#mode() : ''
-        endfunction
-
         function! MyReadonly()
             return &ft !~? 'help' && &readonly ? '≠' : '' " or ⭤
         endfunction
@@ -413,31 +354,6 @@
             return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
         endfunction
 
-"        let g:ctrlp_status_func = {
-""            \ 'main': 'CtrlPStatusFunc_1',
-"            \ 'prog': 'CtrlPStatusFunc_2',
-"            \ }
-"
-"        function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-"            let g:lightline.ctrlp_regex = a:regex
-"            let g:lightline.ctrlp_prev = a:prev
-"            let g:lightline.ctrlp_item = a:item
-"            let g:lightline.ctrlp_next = a:next
-"            return lightline#statusline(0)
-"        endfunction
-"
-"        function! CtrlPStatusFunc_2(str)
-"            return lightline#statusline(0)
-"        endfunction
-"
-"        let g:tagbar_status_func = 'TagbarStatusFunc'
-
-""" }}}
- """ Local ending config, will overwrite anything above. Generally use this. {{{{
-     if filereadable($HOME."/.vimrc.last")
-         source $HOME/.vimrc.last
-     endif
-""" }}}
 
 " Mappings 
 ino jj <esc>
@@ -445,7 +361,7 @@ cno jj <c-c>
 
 map tt :tabnew <Enter>  "Open new tab
 
-" Syntatic 
+" Syntatic
 let g:syntastic_auto_loc_list=0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open=0
@@ -532,10 +448,10 @@ map <leader>sa zg
 map <leader>sd z=
 
 " Map ctrl-movement keys to window switching
- map <C-k> <C-w><Up>
- map <C-j> <C-w><Down>
- map <C-l> <C-w><Right>
- map <C-h> <C-w><Left>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>
 
 set tabstop=2       " The width of a TAB is set to 2g.
 set shiftwidth=2    " Indents will have a width of 2g
@@ -617,7 +533,6 @@ let g:js_indent_log = 1
 let NERDSpaceDelims=1
 
 " Syntax complete"
-
 if has("autocmd") && exists("+omnifunc")
   autocmd Filetype *
     \ if &omnifunc == "" |
@@ -625,11 +540,6 @@ if has("autocmd") && exists("+omnifunc")
     \ endif
 endif
 
-"Airline"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 " Deletes the hidden buffers.
 function! s:delete_hidden_buffers()

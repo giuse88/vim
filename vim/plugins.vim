@@ -2,6 +2,7 @@
 Plugin 'gmarik/Vundle.vim'
 
 "Plugins
+Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive.git'

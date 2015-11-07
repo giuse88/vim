@@ -18,6 +18,8 @@ Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/syntastic'
 Plugin 'Olical/vim-enmasse'
 Plugin 'moll/vim-bbye'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 "Color Schema
 Plugin 'morhetz/gruvbox'

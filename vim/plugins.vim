@@ -20,6 +20,7 @@ Plugin 'Olical/vim-enmasse'
 Plugin 'moll/vim-bbye'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'Yggdroot/indentLine'
 
 "Color Schema
 Plugin 'morhetz/gruvbox'

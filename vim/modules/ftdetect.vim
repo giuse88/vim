@@ -10,6 +10,7 @@ augroup FileTypeRules
     autocmd BufNewFile,BufRead *.jsx set ft=javascript tw=79
     autocmd BufNewFile,BufRead *.sc set ft=scala tw=79
     autocmd BufNewFile,BufRead *.scala set ft=scala tw=79
+    autocmd BufNewFile,BufRead CMakeLists.txt set ft=cmake tw=79
     autocmd BufNewFile,BufRead *.ws ft=scala tw=79
     autocmd BufNewFile,BufRead *.scalaws ft=scala tw=79
 augroup END

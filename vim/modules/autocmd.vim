@@ -28,4 +28,5 @@ augroup RemovePreview
     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 augroup END
 
-
+autocmd GUIEnter * set vb t_vb= " for gui
+autocmd VimEnter * set vb t_vb= " terminal 

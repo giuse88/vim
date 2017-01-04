@@ -37,9 +37,6 @@ map Q <nop>
 nnoremap gn :bnext<CR>
 nnoremap gN :bprevious<CR>
 nnoremap gd :bdelete<CR>
-nnoremap gf <C-^>
-nnoremap <silent> > :bnext<CR>
-nnoremap <silent> < :bprevious<CR>
 
 " Map ctrl-movement keys to window switching
 nmap <silent> <C-h> :wincmd h<CR>

@@ -21,9 +21,8 @@ Plugin 'moll/vim-bbye'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Yggdroot/indentLine'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-airline/vim-airline-themes'
 
 "Color Schema
 Plugin 'morhetz/gruvbox'

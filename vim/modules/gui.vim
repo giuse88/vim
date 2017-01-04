@@ -1,4 +1,4 @@
-set guifont=InconsolataForPowerline\ Nerd\ Font:h12 
+set guifont=InconsolataForPowerline\ Nerd\ Font:h14
 set guioptions-=m                       " remove menubar
 set guioptions-=T                       " remove toolbar
 set guioptions-=r                       " remove right scrollbar
